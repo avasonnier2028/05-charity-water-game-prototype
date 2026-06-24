@@ -13,3 +13,67 @@ Secondary Colors:
 - Pink:       #F16061
 
 */
+:root{
+    --yellow: #FFC907;
+    --blue: #2E9DF7;
+
+    --pixelSize: 1;
+    --gridCellSize: calc(32px * var(--pixelSize));
+}
+
+.pixelArt{
+    image-rendering: pixelated;
+}
+
+
+
+/* CHARACTER STYLES */
+#characterContainer{
+    width: calc(1.5 * var(--gridCellSize));
+    height: calc(1.5 * var(--gridCellSize));
+    overflow: hidden;
+
+    position: absolute;
+}
+#characterSheet{
+    width: calc(3 * var(--gridCellSize));
+    height: calc(3 * var(--gridCellSize));
+}
+
+[data-facing="left"]{
+    transform: translate3d(0, -50%, 0);
+}
+
+[data-facing="right"] {
+    transform: translate3d(-50%, -50%, 0);
+}
+
+[data-facing="up"] {
+    transform: translate3d(-50%, 0, 0);
+}
+
+[data-facing="down"] {
+    transform: translate3d(0, 0, 0);
+}
+
+
+/* MAP STYLES */
+
+.map{
+    image-rendering: pixelated;
+    background-image: url("./img/assets/map.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(20 * var(--gridCellSize));
+    width: calc(29 * var(--gridCellSize));
+    position: relative;
+    /*left: calc(-9 * var(--gridCellSize));*/
+}
+
+@keyframes introScene{
+    0%{
+        transform: translateX(calc(-3 * var(--gridCellSize)));
+    }100%{
+        transform: translateX(0);
+    }
+}
