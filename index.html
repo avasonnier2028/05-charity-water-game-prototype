@@ -13,29 +13,50 @@
 
     <main>
 
-        <div class="map">
-            <div id="characterContainer">
-                <img class="pixelArt" data-facing="right" id="characterSheet" src="./img/assets/characterSheet.png" alt="character" />
-           </div>
+        <div id="camera">
+        <div id="clock">
+            <span id="minutes">3</span>:
+            <span id="seconds">00</span>
         </div>
+        <div id="scoreboard">
+            <ul>
+                <li class="drop score1"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
+                <li class="drop score2"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
+                <li class="drop score3"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
+                <li class="drop score4"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
+                <li class="drop score5"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
+                <li class="drop score6"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
+            </ul>
+        </div>
+        <div id="map" class="map">
+            <div id="characterContainer" data-can="false">
+                <img class="pixelArt" data-facing="right"  id="characterSheet" src="./img/assets/Drop_characterSheet_Big.png" alt="character" />
+           </div>
+           <img id="jerry-can" src="./img/assets/Jerry-can.png" alt="jerry-can charity:water logo"/>
 
-
-        <section id="textbox">
-            <article id="instructions">
-                <p class="instruction Drop thinking">I need to get enough water for my family before it gets too dark. I don't want to get lost.</p>
-                <p class="instruction">Gather enough water for Drop's family of six, but make sure to do it before the sun goes down. Grab your jerry-can to begin.</p>
-            </article>
-
-            <article id="celebration">
-                <p class="celebration mother">Drop, you made it! You don't normally take this long, we were getting worried.</p>
-                <p class="celebration father">We were all getting thirsty, so you made it just in time!</p>
-                <p class="celebration brother">Thanks Drop!</p>
-                <p class="celebration sister">You stayed out pretty late. I'll take the morning shift so you can sleep in tomorrow, but you'll have to do the afternoon!</p>
-                <p class="celebration Drop thinking">I'm glad I made it back in time! I should probably start a bit earlier next time, just to be safe.</p>
-                <p class="celebration Drop thinking">It'd be so nice if there was a spring closer by...</p>
-            </article>
-        </section>
-
+            <section id="textbox">
+                <div id="text-container">
+                <article id="instructions">
+                    <p class="instruction Drop thinking">I need to get enough water for my family before it gets too dark. I don't
+                        want to get lost.</p>
+                    <p class="instruction narrator">Gather enough water for Drop's family of six, but make sure to do it before the
+                        sun goes down. Grab your jerry-can to begin.</p>
+                </article>
+            
+                <article id="celebration">
+                    <p class="celebration mother">Drop, you made it! You don't normally take this long, we were getting worried.</p>
+                    <p class="celebration father">We were all getting thirsty, so you made it just in time!</p>
+                    <p class="celebration brother">Thanks Drop!</p>
+                    <p class="celebration sister">You stayed out pretty late. I'll take the morning shift so you can sleep in
+                        tomorrow, but you'll have to do the afternoon!</p>
+                    <p class="celebration Drop thinking">I'm glad I made it back in time! I should probably start a bit earlier next
+                        time, just to be safe.</p>
+                    <p class="celebration Drop thinking">It'd be so nice if there was a spring closer by...</p>
+                </article>
+            </section>
+            </div>
+        </div>
+        </div>
     </main>
     <script src="script.js"></script>
 </body>
