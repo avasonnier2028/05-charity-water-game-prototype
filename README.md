@@ -21,7 +21,7 @@ This first version should focus on core functionality — clickable elements, sc
   - [x] Font
   - [x] Colors
   - [x] Icons/Logo
-- [ ] **(BONUS)** Add a Challenge
+- [x] **(BONUS)** Add a Challenge
   - Slower when score is high?
   - Infected drops that lower score? or direct failure?
 - [x] **(BONUS)** Game Controls
