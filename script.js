@@ -200,7 +200,7 @@ function startGameplay(){
 function tutorialRound() {
     textbox.addEventListener('click', () => {
         if (shift < 2) {
-            text.style.transform = `translateY(calc(-16.5vh * ${shift}))`;
+            text.style.transform = `translateY(calc(-18vh * ${shift}))`;
         } else{
             textbox.style.display = "none";
             jerryCan.addEventListener('click', startGameplay);

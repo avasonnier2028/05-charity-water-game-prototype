@@ -293,8 +293,8 @@ header h1{
 @media (min-width: 1300px){
     :root {
         --pixelSize: 6;
-        --cameraOffsetY: 1.5;
-        --cameraOffsetX: 1.5;
+        --cameraOffsetY: 0.6;
+        --cameraOffsetX: 1.6;
         --offsetY: 0.5;
         --offsetX: 0.2;
     }
