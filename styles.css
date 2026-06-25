@@ -303,7 +303,7 @@ header h1{
         height: calc(3.5* var(--gridCellSize));
     }
     .map{
-        top: calc(-10 * var(--gridCellSize));
+        top: calc(-11 * var(--gridCellSize));
         left: calc(-5 * var(--gridCellSize));
     }
     #textbox{
