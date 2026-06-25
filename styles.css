@@ -314,7 +314,7 @@ header h1{
 }
 
 /* Tablets and down */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     :root{
         --pixelSize: calc(0.65 * calc(1vw / 1px));
         --cameraOffsetY: 1.5;
