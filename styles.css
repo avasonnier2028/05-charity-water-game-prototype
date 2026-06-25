@@ -60,7 +60,7 @@ header h1{
 .screen{
     box-sizing: border-box;
     background-color: #8BD1CB;
-    height: 90vw;
+    height: 90vh;
     width: min(1300px, 95vw);
     position: relative;
     overflow: hidden;
@@ -292,7 +292,7 @@ header h1{
 /* Large screens and up*/
 @media (min-width: 1300px){
     :root {
-        --pixelSize: 7;
+        --pixelSize: 6;
         --cameraOffsetY: 1.5;
         --cameraOffsetX: 1.5;
         --offsetY: 0.5;
@@ -300,7 +300,7 @@ header h1{
     }
     .screen{
         width: calc(4.75* var(--gridCellSize));
-        height: calc(4.25* var(--gridCellSize));
+        height: calc(43.25* var(--gridCellSize));
     }
     .map{
         top: calc(-10 * var(--gridCellSize));
