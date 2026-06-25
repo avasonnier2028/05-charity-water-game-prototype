@@ -300,7 +300,7 @@ header h1{
     }
     .screen{
         width: calc(4.75* var(--gridCellSize));
-        height: calc(43.25* var(--gridCellSize));
+        height: calc(4.25* var(--gridCellSize));
     }
     .map{
         top: calc(-10 * var(--gridCellSize));
