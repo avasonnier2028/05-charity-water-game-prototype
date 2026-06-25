@@ -5,14 +5,25 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 const maze = document.getElementById("map");
 const character = document.getElementById("characterContainer");
 const characterSheet = document.getElementById("characterSheet");
+const camera = document.getElementById('camera');
 const text = document.getElementById("text-container");
 const textbox = document.getElementById("textbox");
 const jerryCan = document.getElementById("jerry-can")
 const min = document.getElementById('minutes');
 const sec = document.getElementById('seconds');
+const scoreBoard = document.getElementById('scoreboard');
 const scoreDrops = document.getElementsByClassName('drop');
+const btnUp = document.getElementById('btnUp');
+const btnDown = document.getElementById('btnDown');
+const btnLeft = document.getElementById('btnLeft');
+const btnRight = document.getElementById('btnRight');
+const btnStart = document.getElementById('btnStartGame');
+const startScreen = document.getElementById('startScreen');
+const btnRestart = document.getElementById('btnRestartGame');
+const endScreen = document.getElementById('endScreen');
+const endMsg = document.getElementById('endMessage');
 
-let pixel = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--pixelSize"));
+let pixel = parseFloat(getComputedStyle(scoreBoard).left);
 let gridCell = pixel * 32;
 let map =   [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
              [0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,1,1,1,0,0,1,1,1,0,0,1,1,1,0],
@@ -35,8 +46,10 @@ let map =   [[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
              [0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,1,1,1,0,0,1,1,1,0,0,1,1,1,0],
              [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
 
-const camera_offsety = gridCell * 2.05;
-const camera_offsetx = gridCell * 1.75;
+const camera_offsety = gridCell * parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--cameraOffsetY"));
+const camera_offsetx = gridCell * parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--cameraOffsetX"));
+const offsetY =  parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--offsetY"));
+const offsetX =  parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--offsetX"));
 let x = 6; 
 let y = 12;
 let keysPressed = [];
@@ -45,11 +58,11 @@ let shift = 1;
 //play conditions
 const max_score = 6;
 let score = 0;
-let timer = 180; //180s = 3m
+let timer = 120; //120s = 2m
 let timerId;
 let entered = false;
 let win = false;
-
+let moveID;
 
 // Listen for key presses and releases
 const directions = {
@@ -65,7 +78,6 @@ const keys = {
     "ArrowLeft": directions.left,
     "ArrowRight": directions.right
 }
-
 
 const updateMovement = () => {
     if(keysPressed[0]){
@@ -99,12 +111,13 @@ const updateMovement = () => {
         }
     }
 
-    character.style.top = `${(y - 0.45) * gridCell}px`;
-    character.style.left = `${(x - 0.25) * gridCell}px`;
+    console.log("setting position");
+    character.style.top = `${(y-offsetY) * gridCell}px`;
+    character.style.left = `${(x-offsetX) * gridCell}px`;
 
 
-    maze.style.top = `${-(y - 0.45) * gridCell + camera_offsety}px`;
-    maze.style.left = `${-(x - 0.25) * gridCell + camera_offsetx}px`;
+    maze.style.top = `${-(y - offsetY) * gridCell + camera_offsety}px`;
+    maze.style.left = `${-(x - offsetX) * gridCell + camera_offsetx}px`;
 
 
     //Score Check
@@ -126,10 +139,14 @@ const updateMovement = () => {
 async function move () {
     updateMovement();
     await sleep(275);
-    window.requestAnimationFrame(() => {
-        move();
+    moveID = requestAnimationFrame(() => {
+        if(!win){
+            move(); 
+        }else{return;}
     });
+    return;
 }
+
 
 function detectKeyDown(event){
     let direct = keys[event.key];
@@ -146,11 +163,35 @@ async function detectKeyUp(event){
     }
 }
 
-function startGame(){
+function addButtonListeners(){
+    btnUp.addEventListener('pointerdown', btnPushDown.bind(null, directions.up));
+    btnUp.addEventListener('pointerup', btnPushUp.bind(null, directions.up));
+    btnDown.addEventListener('pointerdown', btnPushDown.bind(null, directions.down));
+    btnDown.addEventListener('pointerup', btnPushUp.bind(null, directions.down));
+    btnLeft.addEventListener('pointerdown', btnPushDown.bind(null, directions.left));
+    btnLeft.addEventListener('pointerup', btnPushUp.bind(null, directions.left));
+    btnRight.addEventListener('pointerdown', btnPushDown.bind(null, directions.right));
+    btnRight.addEventListener('pointerup', btnPushUp.bind(null, directions.right));
+}
+function btnPushDown(direct){
+    if (keysPressed.indexOf(direct) === -1) {
+        keysPressed.unshift(direct);
+    }
+}
+async function btnPushUp(direct){
+    await sleep(150);
+    let index = keysPressed.indexOf(direct);
+    if (index > -1) {
+        keysPressed.splice(index, 1);
+    }
+}
+
+function startGameplay(){
     character.setAttribute("data-can", "true");
     characterSheet.setAttribute("src", "./img/assets/Drop_characterSheet_Can.png")
     window.addEventListener('keydown', detectKeyDown);
     window.addEventListener('keyup', detectKeyUp);
+    addButtonListeners();
     move();
 
     startGameTimer();
@@ -159,10 +200,10 @@ function startGame(){
 function tutorialRound() {
     textbox.addEventListener('click', () => {
         if (shift < 2) {
-            text.style.transform = `translateY(calc(var(--pixelSize) * -45px * ${shift}))`;
+            text.style.transform = `translateY(calc(-16.5vh * ${shift}))`;
         } else{
             textbox.style.display = "none";
-            jerryCan.addEventListener('click', startGame);
+            jerryCan.addEventListener('click', startGameplay);
         }
         shift++;
     })
@@ -179,7 +220,7 @@ function playAgainRound(){
     shift = 2;
     text.style.transform = `translateY(calc(var(--pixelSize) * -45px * ${shift}))`;
     textbox.style.display = "none";
-    jerryCan.addEventListener('click', startGame);
+    jerryCan.addEventListener('click', startGameplay);
 
     createDrop(16, 17);
     createDrop(1, 10);
@@ -188,9 +229,6 @@ function playAgainRound(){
     createDrop(18, 10);
     createDrop(3, 27);
 }
-
-
-playAgainRound();
 
 function startGameTimer() {
     clearInterval(timerId);
@@ -226,6 +264,7 @@ function createDrop(y,x){
     maze.appendChild(water);
 }
 
+//drop collection
 window.addEventListener('click', (event) => {
     if (event.target.matches('.spawnDroplet')) {
         score++;
@@ -234,12 +273,41 @@ window.addEventListener('click', (event) => {
     }
 });
 
-function endCelebration() {
-    clearInterval(timerId); 
-    alert("You won!");
+async function endCelebration() {
+    clearInterval(timerId);
+    await sleep(600);
+    window.removeEventListener('keydown', detectKeyDown);
+    window.removeEventListener('keyup', detectKeyUp);
+    camera.style.display = 'none';
+    endScreen.style.display = 'flex';
+
+
+    const minutes = Math.floor(timer / 60);
+    const seconds = timer % 60;
+    const paddedSeconds = String(seconds).padStart(2, '0');
+    endMsg.innerText = `You collected enough water with ${minutes}:${paddedSeconds} minutes left!`;
 }
 
 function endLost() {
     clearInterval(timerId);
-    alert("You lost")
+    camera.style.display = 'none';
+    endScreen.style.display = 'flex';
+
+    window.removeEventListener('keydown', detectKeyDown);
+    window.removeEventListener('keyup', detectKeyUp);
+
+    endMsg.innerText = `You had ${score}/${max_score} water drops`;
 }
+
+
+//Start Game on Start Button
+btnStart.addEventListener('click', ()=>{
+    startScreen.style.display = 'none';
+    camera.style.display = 'block';
+    character.style.animation = 'introScene 4s ease-in-out';
+    tutorialRound();
+})
+//Restart Game on Restart Button
+btnRestart.addEventListener('click', ()=>{
+    window.location.reload();
+})

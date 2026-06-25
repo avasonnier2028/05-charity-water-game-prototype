@@ -13,21 +13,93 @@ Secondary Colors:
 - Pink:       #F16061
 
 */
+
 :root{
     --yellow: #FFC907;
     --blue: #2E9DF7;
 
-    --pixelSize: 6;
+    
     --gridCellSize: calc(32px * var(--pixelSize));
+    --pixelSize: min(6.4, calc(0.5 * calc(1vw / 1px)));
+    --cameraOffsetY: 1.5;
+    --cameraOffsetX: 1.5;
+    --offsetY: 0.7;
+    --offsetX: 0.4;
 
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
+body{
+    overflow: hidden;
+}
+
 
 .pixelArt{
     image-rendering: pixelated;
 }
 
+/* HEADER STYLES */
+header{
+    height: min(6vw, 5rem);
+    width: min(calc(4.75* var(--gridCellSize)), 90vw);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+header img{
+    margin-top: min(5rem, calc(3px * var(--pixelSize)));
+    height: min(5rem, calc(5px * var(--pixelSize)));
+}
+header h1{
+    font-size: min(5rem, calc(5px * var(--pixelSize)));
+}
 
+
+
+/* START/END SCREEN STYLES */
+.screen{
+    box-sizing: border-box;
+    background-color: #8BD1CB;
+    height: 90vw;
+    width: min(1300px, 95vw);
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+.screen h1{
+    color: white;
+    text-align: center;
+}
+#endScreen{
+    background-color: #011220;
+    display: none;
+    color: white;
+}
+#endMessage{
+    text-align: center;
+}
+.content{
+    display:flex;
+    flex-direction: column;
+}
+.content a{
+    color: white;
+    text-decoration: none;
+    margin: 0.4rem;
+}
+.content a:hover{
+    color: var(--yellow);
+}
+.content button{
+    margin: 0.8rem;
+    background-color: var(--yellow);
+}
 
 /* CHARACTER STYLES */
 #characterContainer{
@@ -83,13 +155,13 @@ Secondary Colors:
     height: calc(20 * var(--gridCellSize));
     width: calc(29 * var(--gridCellSize));
     position: absolute;
-    top: calc(-9.5 * var(--gridCellSize));
-    left: calc(-4 * var(--gridCellSize));
+    top: calc(-160px * calc(1vw / 1px));
+    left: calc(-65px * calc(1vw / 1px));
 }
 
 @keyframes introScene{
     0%{
-        transform: translateX(calc(-3 * var(--gridCellSize)));
+        transform: translateX(calc(-1.5 * var(--gridCellSize)));
     }100%{
         transform: translateX(0);
     }
@@ -97,13 +169,10 @@ Secondary Colors:
 
 /* CAMERA STYLING */
 #camera{
-    border: 2px solid red;
     background-color: #011220;
-    height: calc(6 * var(--gridCellSize));
-    width: calc(6 * var(--gridCellSize));
-    position: relative;
-    overflow: hidden;
+    display:none;
 }
+
 #clock{
     position:absolute;
     z-index: 5;
@@ -148,23 +217,170 @@ Secondary Colors:
 #textbox{
     box-sizing: border-box;
     position: absolute;
-    top: calc(14.25 * var(--gridCellSize));
-    left: calc(4.5 * var(--gridCellSize));
+    bottom: 5%;
+    left: 5%;
+    overflow: hidden;
 
     background-color: bisque;
     border: 4px solid brown;
-    padding: calc(var(--pixelSize)* 10px) calc(var(--pixelSize)* 10px);
-    width: calc(4* var(--gridCellSize));
-    height: calc(55px* var(--pixelSize));
-    font-size: calc(var(--pixelSize) * 7px);
-    overflow: hidden;
-
+    padding: 2vh;
+    width: 80vw;
+    height: 18vh;
+    font-size: calc(var(--pixelSize) * 5px);
 }
 
 #textbox p{
-    height: calc(var(--pixelSize) * 35px);
+    height: 13vh;
     margin: 0;
     margin-bottom: calc(var(--pixelSize) * 10px);
     display: flex;
     align-items: center;
+}
+
+/* TOUCHPAD STYLING */
+.touchpad-Container{
+    margin: auto;
+    width: 90vw;
+    height: 18vh;
+    justify-content: end;
+    align-items: center;
+    display: none;
+}
+#touchpad{
+    height: 10vh;
+    width: calc(3.5 * calc(var(--pixelSize) * 12px));
+    padding: 2vh;
+    display: grid;
+    grid-template-columns: repeat(3, calc(var(--pixelSize) * 10px));
+    grid-template-rows: 1fr 1fr;
+    gap: calc(var(--pixelSize) * 2px);
+    justify-content: center;
+    align-content: center;
+
+    grid-template-areas:
+        ".     up     ."
+        "left down right";
+}
+
+#btnDown{
+    grid-area: down;
+}
+#btnUp {
+    grid-area: up;
+}
+#btnLeft {
+    grid-area: left;
+}
+#btnRight {
+    grid-area: right;
+}
+#touchpad button{
+    height: calc(var(--pixelSize) * 10px);
+    width: calc(var(--pixelSize) * 10px);
+    font-size: calc(var(--pixelSize) * 6px);
+    padding: 0;
+
+    border-radius: 10px;
+    border: 3px solid rgb(213, 211, 211);
+    background-color: rgb(240, 237, 237);
+}
+
+
+
+/* RESPONSIVE STYLING */
+
+/* Large screens and up*/
+@media (min-width: 1300px){
+    :root {
+        --pixelSize: 7;
+        --cameraOffsetY: 1.5;
+        --cameraOffsetX: 1.5;
+        --offsetY: 0.5;
+        --offsetX: 0.2;
+    }
+    .screen{
+        width: calc(4.75* var(--gridCellSize));
+        height: calc(4.25* var(--gridCellSize));
+    }
+    .map{
+        top: calc(-10 * var(--gridCellSize));
+        left: calc(-5 * var(--gridCellSize));
+    }
+    #textbox{
+        bottom: 4%;
+        left: 5%;
+        width: calc(4.25* var(--gridCellSize));
+    }
+}
+
+/* Tablets and down */
+@media (max-width: 768px) {
+    :root{
+        --pixelSize: calc(0.65 * calc(1vw / 1px));
+        --cameraOffsetY: 1.5;
+        --cameraOffsetX: 1.5;
+        --offsetY: 0.5;
+        --offsetX: 0.2;
+    }
+    .screen{
+        height: 75vh;
+        width: 90vw;
+    }
+    .map{
+        top: calc(-208px * calc(1vw / 1px));
+        left: calc(-110px * calc(1vw / 1px));
+    }
+    [data-can="false"] ~ #jerry-can{
+        top: calc(13.15 * var(--gridCellSize));
+        left: calc(5.3 * var(--gridCellSize));
+    }
+    .touchpad-Container{
+        display: flex;
+    }
+    #textbox{
+        bottom: 5%;
+        left: 5%;
+    }
+}
+/* Mobile phones and down */
+@media (max-width: 480px) {
+    :root {
+        --pixelSize: calc(0.70 * calc(1vw / 1px));
+        --cameraOffsetY: 2.15;
+        --cameraOffsetX: 1.25;
+        --offsetY: 0.5; 
+        --offsetX: 0.2;
+    }
+    .screen {
+        height: 70vh;
+        width: 90vw;
+        margin: 10vw auto;
+        margin-bottom: 0;
+    }
+    .map {
+        top: calc(-210px * calc(1vw / 1px));
+        left: calc(-120px * calc(1vw / 1px));
+    }
+    .touchpad-Container{
+        height: 20vh;
+        justify-content: center;
+        position: relative;
+        z-index: 4;
+    }
+
+    #touchpad{
+        width: calc(5 * calc(var(--pixelSize) * 1vw));
+        grid-template-columns: repeat(3, calc(var(--pixelSize) * 3vh));
+        margin-bottom: calc(var(--pixelSize) * 1vw)
+    }
+    #touchpad button{
+        height: calc(var(--pixelSize) *2.5vh);
+        width: calc(var(--pixelSize) * 2.5vh);
+        font-size: calc(var(--pixelSize) * 1.8vh);
+        padding: 0;
+
+        border-radius: 10px;
+        border: 2px solid rgb(213, 211, 211);
+        background-color: rgb(240, 237, 237);
+    }
 }

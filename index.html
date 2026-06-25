@@ -8,56 +8,92 @@
 </head>
 <body>
     <header>
-        <h1>Placeholder</h1>
+        <img class="logo" src="./img/branding/cw_logo_horizontal.png" alt="charity: water logo"/>
+        <h1>Drop's Journey</h1>
     </header>
 
     <main>
+        
+        <section class="screen" id="startScreen">
+            <h1 class="title">Drop's Journey</h1>
+            <article class="content start">
+                <a class="link" href="https://www.charitywater.org/our-work?_gl=1*1chwpjb*_up*MQ..*_gs*MQ..&gclid=Cj0KCQjwo_PRBhDNARIsAEcVALX-uf4-BuhNVlt5UAtv__nDK9XwKOhNQ9A0cqCwjorLyq7uLSTNHdQaAkgUEALw_wcB&gbraid=0AAAAADNj5D9H_o8yd5CBMJW_vQ3UyisZD" target="_blank">Learn More</a>
+                <a class="link" href="https://www.charitywater.org/donate/the-spring?_gl=1*1pwv780*_up*MQ..*_gs*MQ..&gclid=Cj0KCQjwo_PRBhDNARIsAEcVALX-uf4-BuhNVlt5UAtv__nDK9XwKOhNQ9A0cqCwjorLyq7uLSTNHdQaAkgUEALw_wcB&gbraid=0AAAAADNj5D9H_o8yd5CBMJW_vQ3UyisZD" target="_blank">Explore the Spring</a>
+                <button id="btnStartGame">Start</button>
+            </article>
+        </section>
 
-        <div id="camera">
-        <div id="clock">
-            <span id="minutes">3</span>:
-            <span id="seconds">00</span>
-        </div>
-        <div id="scoreboard">
-            <ul>
-                <li class="drop score1"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
-                <li class="drop score2"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
-                <li class="drop score3"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
-                <li class="drop score4"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
-                <li class="drop score5"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
-                <li class="drop score6"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
-            </ul>
-        </div>
-        <div id="map" class="map">
-            <div id="characterContainer" data-can="false">
-                <img class="pixelArt" data-facing="right"  id="characterSheet" src="./img/assets/Drop_characterSheet_Big.png" alt="character" />
-           </div>
-           <img id="jerry-can" src="./img/assets/Jerry-can.png" alt="jerry-can charity:water logo"/>
-
+        <div class="screen" id="camera">
+            <div id="clock">
+                <span id="minutes">2</span>:<span id="seconds">00</span>
+            </div>
+            <div id="scoreboard">
+                <ul>
+                    <li class="drop score1"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
+                    <li class="drop score2"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
+                    <li class="drop score3"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
+                    <li class="drop score4"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
+                    <li class="drop score5"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
+                    <li class="drop score6"><img class ="droplet" src="./img/branding/drop.svg" alt="water drop"></li>
+                </ul>
+            </div>
+            <div id="map" class="map">
+                <div id="characterContainer" data-can="false">
+                    <img class="pixelArt" data-facing="right"  id="characterSheet" src="./img/assets/Drop_characterSheet_Big.png" alt="character" />
+                </div>
+                <img id="jerry-can" src="./img/assets/Jerry-can.png" alt="jerry-can charity:water logo"/>
+            </div>
             <section id="textbox">
                 <div id="text-container">
-                <article id="instructions">
-                    <p class="instruction Drop thinking">I need to get enough water for my family before it gets too dark. I don't
-                        want to get lost.</p>
-                    <p class="instruction narrator">Gather enough water for Drop's family of six, but make sure to do it before the
-                        sun goes down. Grab your jerry-can to begin.</p>
-                </article>
+                    <article id="instructions">
+                        <p class="instruction Drop thinking">I need to get enough water for my family before it gets too dark. I
+                            don't
+                            want to get lost.</p>
+                        <p class="instruction narrator">Gather enough water for Drop's family of six, but make sure to do it before
+                            the
+                            sun goes down. Grab your jerry-can to begin.</p>
+                    </article>
             
-                <article id="celebration">
-                    <p class="celebration mother">Drop, you made it! You don't normally take this long, we were getting worried.</p>
-                    <p class="celebration father">We were all getting thirsty, so you made it just in time!</p>
-                    <p class="celebration brother">Thanks Drop!</p>
-                    <p class="celebration sister">You stayed out pretty late. I'll take the morning shift so you can sleep in
-                        tomorrow, but you'll have to do the afternoon!</p>
-                    <p class="celebration Drop thinking">I'm glad I made it back in time! I should probably start a bit earlier next
-                        time, just to be safe.</p>
-                    <p class="celebration Drop thinking">It'd be so nice if there was a spring closer by...</p>
-                </article>
+                    <!--<article id="celebration">
+                                <p class="celebration mother">Drop, you made it! You don't normally take this long, we were getting worried.</p>
+                                <p class="celebration father">We were all getting thirsty, so you made it just in time!</p>
+                                <p class="celebration brother">Thanks Drop!</p>
+                                <p class="celebration sister">You stayed out pretty late. I'll take the morning shift so you can sleep in
+                                    tomorrow, but you'll have to do the afternoon!</p>
+                                <p class="celebration Drop thinking">I'm glad I made it back in time! I should probably start a bit earlier next
+                                    time, just to be safe.</p>
+                                <p class="celebration Drop thinking">It'd be so nice if there was a spring closer by...</p>
+                            </article> -->
             </section>
-            </div>
         </div>
+
+        <section class="screen" id="endScreen">
+            <h1 class="title">Drop's Journey</h1>
+            <h3 id="endMessage">Text text text text text text text</h3>
+            <article class="content">
+                <a class="link"
+                    href="https://www.charitywater.org/our-work?_gl=1*1chwpjb*_up*MQ..*_gs*MQ..&gclid=Cj0KCQjwo_PRBhDNARIsAEcVALX-uf4-BuhNVlt5UAtv__nDK9XwKOhNQ9A0cqCwjorLyq7uLSTNHdQaAkgUEALw_wcB&gbraid=0AAAAADNj5D9H_o8yd5CBMJW_vQ3UyisZD"
+                    target="_blank">Learn More</a>
+                <a class="link"
+                    href="https://www.charitywater.org/donate/the-spring?_gl=1*1pwv780*_up*MQ..*_gs*MQ..&gclid=Cj0KCQjwo_PRBhDNARIsAEcVALX-uf4-BuhNVlt5UAtv__nDK9XwKOhNQ9A0cqCwjorLyq7uLSTNHdQaAkgUEALw_wcB&gbraid=0AAAAADNj5D9H_o8yd5CBMJW_vQ3UyisZD"
+                    target="_blank">Explore the Spring</a>
+                <button id="btnRestartGame">Play Again</button>
+            </article>
+        </section>
+
+        <section class="touchpad-Container">
+        <div id="touchpad">
+            <button id="btnRight"><i class="fa fa-solid fa-circle-arrow-right" style="color: rgb(255, 212, 59);"></i></button>
+            <button id="btnLeft"><i class="fa fa-solid fa-circle-arrow-left" style="color: rgb(255, 212, 59);"></i></button>
+            <button id="btnUp"><i class="fa fa-solid fa-circle-arrow-up" style="color: rgb(255, 212, 59);"></i></button>
+            <button id="btnDown"><i class="fa fa-solid fa-circle-arrow-down" style="color: rgb(255, 212, 59);"></i></button>
         </div>
+        </section>
+
+        
     </main>
+
+    <script src="https://kit.fontawesome.com/e6ffe2bd38.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>

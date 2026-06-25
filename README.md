@@ -9,23 +9,23 @@ This first version should focus on core functionality — clickable elements, sc
 ### Tasks
 
 - Core Interactivity
-  - [ ] Score Tracker
-  - [ ] Timer
-  - [ ] Maze Layout
-  - [ ] Instruction Cut Scene
+  - [x] Score Tracker
+  - [x] Timer
+  - [x] Maze Layout
+  - [x] Instruction Cut Scene
 - Responsive Layout
-  - [ ] Mobile Screen (default)
-  - [ ] Laptop Screen
-  - [ ] iPad Screen 
+  - [x] Mobile Screen (default)
+  - [x] Laptop Screen
+  - [x] iPad Screen 
 - Branding & Design
-  - [ ] Font
-  - [ ] Colors
-  - [ ] Icons/Logo
+  - [x] Font
+  - [x] Colors
+  - [x] Icons/Logo
 - [ ] **(BONUS)** Add a Challenge
   - Slower when score is high?
   - Infected drops that lower score? or direct failure?
-- [ ] **(BONUS)** Game Controls
-- [ ] **(BONUS)** Celebrate Wins
+- [x] **(BONUS)** Game Controls
+- [x] **(BONUS)** Celebrate Wins
 
 ## 
 
