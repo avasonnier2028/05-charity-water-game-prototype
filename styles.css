@@ -60,7 +60,7 @@ header h1{
 .screen{
     box-sizing: border-box;
     background-color: #8BD1CB;
-    height: 90vh;
+    height: 80vh;
     width: min(1300px, 95vw);
     position: relative;
     overflow: hidden;
