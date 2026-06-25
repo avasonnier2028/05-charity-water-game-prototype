@@ -346,7 +346,7 @@ header h1{
 @media (max-width: 480px) {
     :root {
         --pixelSize: calc(0.70 * calc(1vw / 1px));
-        --cameraOffsetY: 2.15;
+        --cameraOffsetY: 1.5;
         --cameraOffsetX: 1.25;
         --offsetY: 0.5; 
         --offsetX: 0.2;
@@ -358,7 +358,7 @@ header h1{
         margin-bottom: 0;
     }
     .map {
-        top: calc(-210px * calc(1vw / 1px));
+        top: calc(-240px * calc(1vw / 1px));
         left: calc(-120px * calc(1vw / 1px));
     }
     .touchpad-Container{
